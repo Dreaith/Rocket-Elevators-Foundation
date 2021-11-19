@@ -34,7 +34,7 @@ class Elevator < ApplicationRecord
       @client.messages.create(
         from: from,
         to: to,
-        body: "Please Contact Branch further instrution. maintenance need Elevator#"
+        body: "Please contact your branch for further instructions. Maintenance is needed for  Elevator #"
         )
       end
     end
