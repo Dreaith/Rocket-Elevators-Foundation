@@ -28,7 +28,7 @@ class Elevator < ApplicationRecord
 
 
       from = ENV['TWILIO_NUM'] # Your Twilio number
-      to = ENV['PHONE_NUM'] # Your mobile phone number
+      to = ENV['PERSONAL_NUM'] # Your mobile phone number
 
 
       @client.messages.create(
