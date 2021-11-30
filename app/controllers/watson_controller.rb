@@ -5,13 +5,13 @@ include IBMWatson
 class WatsonController < ApplicationController
   def greetings
     authenticator = Authenticators::IamAuthenticator.new(
-      apikey: 'kgFqtBiGs7TEeBjSjLUSo61P9ll8B3n5_V24icg6aChJ'
+      apikey: ENV['WATSON_API_KEY']
     )
     text_to_speech = TextToSpeechV1.new(
       authenticator: authenticator
     )
-    text_to_speech.service_url = 'https://api.us-east.text-to-speech.watson.cloud.ibm.com/instances/170b203b-7d56-488e-9016-77132e084dcd'
-
+    text_to_speech.service_url = ENV['WATSON_SERVICE_URL']
+    
     numOFInactive = Elevator.where.not(status:"Online").count
 
     File.open("app/assets/audio/greetings.wav", "wb") do |audio_file|
@@ -35,12 +35,12 @@ class WatsonController < ApplicationController
 
     def starwars
       authenticator = Authenticators::IamAuthenticator.new(
-        apikey: "kgFqtBiGs7TEeBjSjLUSo61P9ll8B3n5_V24icg6aChJ"
+        apikey: ENV['WATSON_API_KEY']
       )
       text_to_speech = TextToSpeechV1.new(
         authenticator: authenticator
       )
-      text_to_speech.service_url = "https://api.us-east.text-to-speech.watson.cloud.ibm.com"
+      text_to_speech.service_url = ENV['WATSON_SERVICE_URL']
      
       starwarsfact = ["number 1. Did you know, Michael Jackson Almost Played Jar Jar ?",
           "number 2. Did you know, JarJar Binks Was The First Fully CG Main Character, which helped pioneering the world of motion capture ?",
