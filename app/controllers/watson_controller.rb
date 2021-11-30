@@ -10,7 +10,7 @@ class WatsonController < ApplicationController
     text_to_speech = TextToSpeechV1.new(
       authenticator: authenticator
     )
-    text_to_speech.service_url = ENV['WATSON_SERVICE_URL']
+    text_to_speech.service_url = ENV['WATSON_URL']
     
     numOFInactive = Elevator.where.not(status:"Online").count
 
