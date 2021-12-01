@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
     json = JSON.parse(response.body)
     json['success'] && json['score'] > RECAPTCHA_MINIMUM_SCORE && json['action'] == recaptcha_action
   end
+  def getBuilding
+    
+  end
 end
+

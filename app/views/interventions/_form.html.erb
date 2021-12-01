@@ -1,0 +1,104 @@
+<%= form_with(model: intervention, local: true) do |form| %>
+  <% if intervention.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intervention.errors.count, "error") %> prohibited this intervention from being saved:</h2>
+
+      <ul>
+      <% intervention.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p id="notice"><%= notice %></p>
+
+
+
+<table>
+
+		<tbody>
+    
+
+            <!-- <br> -->
+			<hr class="m-0" /><!-- 1px line separator -->
+
+
+			<!--Request a Form-->
+    
+			<section id="request-quote">
+				<div class="container">
+					<div class="heading-title heading-dotted text-center">
+						<h1>Intervention List</h1>
+					</div>
+
+							<!--Header text-->
+							<div class="row-12 p-3 m-2">
+								<h4 class="text-center">Choose the customer</h4>
+							</div><br>
+			
+							
+
+						<div id="border-rad-3" class="border bg-white p-8">
+							<div class= "align-items-center text-center form-select form-select-inline px-5">
+								<div class="col-md-12">
+									<%= form_with model: intervention, id:"fields", local:true, method: :post do |f| %>
+											<%= f.select(:customer_id, Customer.all.collect {|p| [p.company_name ,p.user_id, ]},  {prompt: "Select"}, {class: 'form-control'}) %>
+                
+											<%= f.select(:building_id , [],  {prompt: "Select"}, {class: 'form-control'}) %>
+											
+											<%= f.select(:battery_id, [], {prompt: "Select"}, {class: 'form-control'}) %>
+											
+											<%= f.select(:column_id, [],  {prompt: "Select"}, {class: 'form-control'}) %>
+											
+											<%= f.select(:elevator_id, [],  {prompt: "Select"}, {class: 'form-control'}) %>
+													</div>
+												</div>
+
+										<!-- Employee Header -->
+										<div class="form-group-2 col-md-12 text-center">
+											<h4 class= "text-center">Employees List</h4>
+
+											<label class="text-center font-weight-bold">Choose an Employee</label>
+											<br>
+
+											<!--dropdown for employee-->
+									
+                      					<%= f.select(:employee_id, Employee.all.collect {|p| [p.first_name + " " + p.last_name] },  {prompt: "Select"}, {class: 'form-control'}) %>
+											<br><hr>
+
+											<!-- Description of Interventions -->
+											<h3 class="text-center">Description</h3>
+											<div class="row">
+											<div class="col-md-12" >
+											<label for="intervention:report">Nature of the Intervention *</label>
+											<textarea required maxlength="10000" rows="8" class="form-control" name="intervention[report]" id="intervention:report"></textarea>
+											</div>
+															</div>
+																</div>
+																<br><hr>
+										<div class="container align-items-center text-right form-check-inline px-5">
+
+											<div>
+											<%= submit_tag "Submit", id:"submit", class:"btn btn-primary" %>
+											</div>
+										</div>
+															</div>
+
+                					<% end %>
+								</div><br><hr>
+							</div>
+						</div>
+          			</div>
+				</div>
+        	<div>
+		</div>
+	</section>
+    
+  </tbody>
+</table>
+
+<br>
+
+
+<% end %>

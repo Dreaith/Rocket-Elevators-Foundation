@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_173613) do
+ActiveRecord::Schema.define(version: 2021_12_01_180458) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "namespace"
@@ -160,18 +160,36 @@ ActiveRecord::Schema.define(version: 2021_11_22_173613) do
   end
 
   create_table "fact_interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "employee_id" , null: false
-    t.bigint "building_id" , null: false
-    t.bigint "battery_id" 
+    t.bigint "employee_id", null: false
+    t.bigint "building_id", null: false
+    t.bigint "battery_id"
     t.bigint "column_id"
     t.bigint "elevator_id"
-    t.datetime "start_intervention" , null: false
+    t.datetime "start_intervention", null: false
     t.datetime "end_intervention"
     t.string "result"
     t.string "report"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "interventions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "author"
+    t.bigint "employee_id"
+    t.bigint "building_id"
+    t.bigint "battery_id"
+    t.bigint "column_id"
+    t.bigint "elevator_id"
+    t.date "start_intervention"
+    t.date "end_intervention"
+    t.string "result"
+    t.string "report"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_interventions_on_building_id"
+    t.index ["employee_id"], name: "index_interventions_on_employee_id"
   end
 
   create_table "leads", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -237,4 +255,6 @@ ActiveRecord::Schema.define(version: 2021_11_22_173613) do
   add_foreign_key "customers", "users"
   add_foreign_key "elevators", "columns"
   add_foreign_key "employees", "users"
+  add_foreign_key "interventions", "buildings"
+  add_foreign_key "interventions", "employees"
 end

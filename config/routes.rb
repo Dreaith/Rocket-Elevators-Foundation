@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+  resources :interventions
   resources :fact_interventions 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   get '/commercial', to: 'home#commercial'
   get '/quote', to: 'home#quote'
   get '/index', to: 'home#index'
-  get '/fact_interventions', to:'home#fact_interventions'
+  get '/interventions/new', to:'home#intervention'
   post '/create_quotes' =>'quotes#create'
   post '/create_leads' => 'leads#create'
   get '/users/:id' , to: 'users#show'

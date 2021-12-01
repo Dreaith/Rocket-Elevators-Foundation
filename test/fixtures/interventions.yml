@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author: 1
+  intervention_customer_id: 1
+  intervention_building_id: 1
+  intervention_battery_id: 1
+  intervention_column_id: 1
+  intervention_elevator_id: 1
+  intervention_employee_id: 1
+
+two:
+  author: 1
+  intervention_customer_id: 1
+  intervention_building_id: 1
+  intervention_battery_id: 1
+  intervention_column_id: 1
+  intervention_elevator_id: 1
+  intervention_employee_id: 1
