@@ -89,6 +89,120 @@
 								</div><br><hr>
 							</div>
 						</div>
+
+						<script>
+						$("#intervention_building_id").hide()
+						$("#intervention_battery_id").hide()
+						$("#intervention_column_id").hide()
+						$("#intervention_elevator_id").hide()
+						console.log("script")
+						$("#intervention_customer_id").on("change", function(){
+							$("#intervention_building_id").show()
+							$.ajax({
+								url: "/get_building",
+								method: "GET",
+								dataType: "json",
+								data: {building_id: $("#intervention_customer_id").val()},
+								error: function (xhr, status, error) {
+									console.error('AJAX Error: ' + status + error);
+								},
+								success: function (response) {
+									console.log(response);
+									$("#intervention_customer_id").val()
+									var buildings = response['buildings'];
+									console.log(response)
+
+									console.log(buildings)
+									for(var i = 0; i < buildings.length; i++){
+										console.log("<option value=" + buildings[i].id + '>' + "Building" + " " + buildings[i].id + '</option>')
+										$("#intervention_building_id").append("<option value="+ buildings[i].id + '>' + "Building" + " " + buildings[i].id + '</option>');
+									}
+								}
+							}
+							);
+							console.log("ok")
+						});
+
+						$("#intervention_building_id").on("change", function(){
+							$("#intervention_battery_id").show()
+							$.ajax({
+								url: "/get_battery",
+								method: "GET",
+								dataType: "json",
+								data: {battery_id: $("#intervention_building_id").val()},
+								error: function (xhr, status, error) {
+									console.error('AJAX Error: ' + status + error);
+								},
+								success: function (response) {
+									console.log(response);
+									$("#intervention_building_id").val()
+									var batteries = response['batteries'];
+									console.log(response)
+
+									console.log(batteries)
+									for(var i = 0; i < batteries.length; i++){
+										$("#intervention_battery_id").append("<option value=" + batteries[i].id + '>' + "Battery" + " " +batteries[i].id + '</option>');
+									}
+								}
+							}
+							);
+							console.log("ok")
+						});
+
+						$("#intervention_battery_id").on("change", function(){
+							$("#intervention_column_id").show()
+							$.ajax({
+								url: "/get_column",
+								method: "GET",
+								dataType: "json",
+								data: {column_id: $("#intervention_battery_id").val()},
+								error: function (xhr, status, error) {
+									console.error('AJAX Error: ' + status + error);
+								},
+								success: function (response) {
+									console.log(response);
+									$("#intervention_battery_id").val()
+									var columns = response['columns'];
+									console.log(response)
+
+									console.log(columns)
+									for(var i = 0; i < columns.length; i++){
+										$("#intervention_column_id").append("<option value=" + columns[i].id + '>' + "Column" + " " +columns[i].id + '</option>');
+									}
+								}
+							}
+							);
+							console.log("ok")
+						});
+
+						$("#intervention_column_id").on("change", function(){
+							$("#intervention_elevator_id").show()
+							$.ajax({
+								url: "/get_elevator",
+								method: "GET",
+								dataType: "json",
+								data: {elevator_id: $("#intervention_column_id").val()},
+								error: function (xhr, status, error) {
+									console.error('AJAX Error: ' + status + error);
+								},
+								success: function (response) {
+									console.log(response);
+									$("#intervention_column_id").val()
+									var elevators = response['elevators'];
+									console.log(response)
+
+									console.log(elevators)
+									for(var i = 0; i < elevators.length; i++){
+										$("#intervention_elevator_id").append("<option value=" + elevators[i].id + '>' + "Elevator" + " " +elevators[i].id + '</option>');
+									}
+								}
+							}
+							);
+							console.log("ok")
+						});
+					
+
+						</script>
           			</div>
 				</div>
         	<div>
@@ -102,3 +216,25 @@
 
 
 <% end %>
+$.ajax({
+								url: "/interventions/get_building",
+								method: "GET",
+								dataType: "json",
+								data: {get_building: $("#intervention_customer_id").val()},
+								error: function (xhr, status, error) {
+									console.error('AJAX Error: ' + status + error);
+								},
+								success: function (response) {
+									console.log(response);
+									$("#intervention_customer_id").val()
+									var buildings = response['get_building'];
+									console.log(response)
+									$("#intervention_building_id").
+
+									$("#intervention_building_id").append('<option>Select Building</option>');
+									for(var i = 0; i < buildings.length; i++){
+										$("#intervention_building_id").append("<option value=" + buildings[i].id + '>' +buildings[i].id + '</option>');
+									}
+								}
+							}
+							);
