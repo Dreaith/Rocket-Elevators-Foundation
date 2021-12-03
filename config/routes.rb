@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/get_battery/',to:'interventions#get_battery'
   get '/get_column',to:'interventions#get_column'
   get '/get_elevator',to:'interventions#get_elevator'
+  post '/interventions/submit' => 'interventions#create'
   post '/create_quotes' =>'quotes#create'
   post '/create_leads' => 'leads#create'
   get '/users/:id' , to: 'users#show'
