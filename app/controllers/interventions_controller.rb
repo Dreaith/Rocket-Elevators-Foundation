@@ -2,6 +2,25 @@ class InterventionsController < InheritedResources::Base
 
   def create
     @interventions = Intervention.create!(intervention_params)
+
+    ZendeskAPI::Ticket.new($client, :id => 1, :priority => "urgent")
+    
+    ZendeskAPI::Ticket.create!(@client, 
+      :subject => "Request from Rocket Elevator Intervention Unit",
+      :requester => {"name": @current_user.first_name},
+      :comment => { :value => 
+        "A new ticket as been created. please refer to the request for Customer ##{@interventions.customer_id}
+        including: 
+        Building # #{@interventions.building_id} ,
+        Battery # #{@interventions.battery_id} ,
+        Column # #{@interventions.column_id} , 
+        elevator # #{@interventions.elevator_id}.
+        this request as been assign to employee # #{@interventions.employee_id}
+        Additional Information:
+        #{@interventions.report}"
+      },
+      :type => "question",  
+      :priority => "urgent")
   end
 
   def get_building
