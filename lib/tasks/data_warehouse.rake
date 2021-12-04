@@ -3,7 +3,7 @@
 # require "faker"
 
 
-# connection = PG::Connection.new(host:'codeboxx-postgresql.cq6zrczewpu2.us-east-1.rds.amazonaws.com',port:'5432',dbname:'jkg',user:'codeboxx',password:'Codeboxx1!')
+# connection = PG::Connection.new
 
 # puts "\e[0;36mCurrently connected to:\e[0m '" + ActiveRecord::Base.connection.current_database + "'"
 # puts "\e[0;36mCurrently connected for PG to:\e[0m '" + connection.db + "'"
