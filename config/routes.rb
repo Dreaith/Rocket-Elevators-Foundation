@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
 
+  resources :jokes
   resources :interventions
   resources :fact_interventions 
   devise_for :users, ActiveAdmin::Devise.config
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   get '/commercial', to: 'home#commercial'
   get '/quote', to: 'home#quote'
   get '/index', to: 'home#index'
+  get '/jokes', to: 'home#jokes'
+  get '/dadjoke/get_dad_jokes'
   get '/interventions/new', to:'home#intervention'
   get '/get_building', to: 'interventions#get_building'
   get '/get_battery/',to:'interventions#get_battery'

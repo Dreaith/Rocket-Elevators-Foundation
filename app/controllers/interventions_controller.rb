@@ -1,5 +1,7 @@
 class InterventionsController < InheritedResources::Base
 
+  before_action :authenticate_employee_user! 
+
   def create
     @interventions = Intervention.create!(intervention_params)
 
@@ -21,6 +23,9 @@ class InterventionsController < InheritedResources::Base
       },
       :type => "question",  
       :priority => "urgent")
+  end
+
+  def show
   end
 
   def get_building
