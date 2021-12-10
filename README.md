@@ -9,3 +9,4 @@ rake wh:populate:* => populate psql tables with data from mysql database
 rake wh:reset => Does all the previous rake command in order
 
 rake final:setup  => does rake db:reset and rake final:setup
+# Elevator-Media-Stream
