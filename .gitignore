@@ -28,5 +28,9 @@
 
 /config/database.yml
 
+/home/dreaith/Rocket_Elevators_API/y
+
+y.pub
+
 # Ignore application configuration
 /config/application.yml
