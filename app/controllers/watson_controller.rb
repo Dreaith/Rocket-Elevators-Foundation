@@ -17,7 +17,7 @@
 #     File.open("app/assets/audio/greetings.wav", "wb") do |audio_file|
 #         response = text_to_speech.synthesize(
 #           text: "Greetings  #{$current_user_firstname.to_s},
-#           where are currently #{Elevator.count.to_s} elevators deployed in the #{Building.count.to_s} buildings of your #{Customer.count.to_s} customers.
+#           there are currently #{Elevator.count.to_s} elevators deployed in the #{Building.count.to_s} buildings of your #{Customer.count.to_s} customers.
 #           Currently,#{numOFInactive.to_s} elevators are not in Online Status and are being serviced.
 #           You currently have #{Quote.count.to_s} quotes awaiting processing.
 #           You currently have #{Lead.count.to_s} in your contact requests.
