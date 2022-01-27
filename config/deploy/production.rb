@@ -13,7 +13,7 @@ app = 'CarlgregorJeannoel' if app.nil? || app.empty?
 set :application, app
 set :rails_env, 'development'
 set :bundle_without, 'production'
-set :deploy_to, "/home/ubuntu/apps/#{app}"
+set :deploy_to, "/home/dreaith/apps/#{app}"
 set :linked_dirs, %w[tmp/pids tmp/sockets log]
 set :linked_files, %w[config/database.yml config/application.yml]
 
@@ -26,7 +26,7 @@ set :linked_files, %w[config/database.yml config/application.yml]
 # Don't use `:all`, it's a meta role.
 
 role :app, %w[dreaith@159.203.34.62]
-role :web, %w[dreaithh@159.203.34.62]
+role :web, %w[dreaith@159.203.34.62]
 role :db,  %w[dreaith@159.203.34.62]
 
 # Configuration
