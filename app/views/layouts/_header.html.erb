@@ -72,15 +72,14 @@
 									</li>
 
 									
-									<% if employee_signed_in?%> 
+									
+										
+									
+									<% if user_signed_in?%> 
 										<li class="nav-item">
 										<a class="nav-link" href="<%= new_intervention_path%>" id="navbar" role="button" aria-haspopup="true" aria-expanded="false">
 										INTERVENTIONS
 										</a>
-										
-									<% end %>
-									
-									<% if user_signed_in?%> 
 										<li class="nav-item dropdown">
 										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           								MANAGE ACCOUNT
